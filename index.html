@@ -10,12 +10,18 @@
   </head>
 
   <body>
-
+    <div id="video-bg">
+      <video class="video-bg" autoplay loop> 
+        <source src="video/pushups.mp4">
+      </video>
+    </div>
     <div id="latestExercise">
       <h1 class="exerciseheader"> Your next exercise is... </h1>
-      <span class="exercisename">test</span>
-      <span class="exercisetime">test</span>
-      <span class="exerciseleader">test</span>
+      <span class="exercisename"></span>
+      <p>at</p>
+      <span class="exercisetime"></span>
+      <p>with</p>
+      <span class="exerciseleader"></span>
     </div>
 
 
@@ -30,13 +36,19 @@
         gData = data
         console.log("some data", gData)
 
-        var optionsJSON = ["latestExercise"]
+        var latestExercise = gData[gData.length - 1]
+        
+        // Pretty Things
 
-        var latestExerciseIs = gData[gData.length - 1]
-        var latestExercise = ich.latestExercise({
-          rows: latestExerciseIs
-        })
-        $('#latestExercise').html(latestExercise)
+        var prettyName = latestExercise.username.split('@').slice(0)
+
+        var prettyTime = latestExercise.exercisetime.split(':').slice(0)
+
+        // Posting
+
+        $("span.exercisename").html(latestExercise.exercise) 
+        $("span.exercisetime").html(prettyTime[0] + ":" + prettyTime[1]) 
+        $("span.exerciseleader").html(prettyName[0]) 
 
 
       }
