@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="javascripts/sheetsee.js"></script>
+    <script type="text/javascript" src="javascripts/ICanHaz.js"></script>     
+    <script type="text/javascript" src="javascripts/tabletop.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+  </head>
+
+  <body>
+
+    <div id="latestExercise">
+      <h1 class="exerciseheader"> Your next exercise is... </h1>
+      <span class="exercisename">test</span>
+      <span class="exercisetime">test</span>
+      <span class="exerciseleader">test</span>
+    </div>
+
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var gData
+        var URL = "0AvSKXOZM3nuHdDVsQ0hJYi1qUkNrS2oxcDJyaTc2S1E"
+        Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } ) 
+      })
+
+      function showInfo(data) {
+        gData = data
+        console.log("some data", gData)
+
+        var optionsJSON = ["latestExercise"]
+
+        var latestExerciseIs = gData[gData.length - 1]
+        var latestExercise = ich.latestExercise({
+          rows: latestExerciseIs
+        })
+        $('#latestExercise').html(latestExercise)
+
+
+      }
+    </script>
+  </body>
+</html>
